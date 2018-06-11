@@ -3,6 +3,7 @@ import { RoomManager } from '../components/rooms/roomManager';
 import { SpawnManager } from '../components/spawns/spawnManager';
 import { CreepManager } from '../components/creeps/creepManager';
 import { CreepAction } from 'components/creeps/creepAction';
+import { MemoryManager } from '../shared/memoryManager';
 
 export class Factory {
   private roomManager: RoomManager;
@@ -10,6 +11,7 @@ export class Factory {
   private sourcesManager: SourcesManager;
   private creepAction: CreepAction;
   private creepManager: CreepManager;
+  private memoryManager: MemoryManager;
 
   constructor() {
     this.roomManager = new RoomManager();
@@ -21,6 +23,11 @@ export class Factory {
       this.spawnManager,
       this.creepAction
     );
+    this.memoryManager = new MemoryManager();
+  }
+
+  public getMemoryManager(): MemoryManager {
+    return this.memoryManager;
   }
 
   public getCreepAction(): CreepAction {

@@ -13,7 +13,13 @@ export class GameManager {
   private spawnManager: SpawnManager;
   private creepManager: CreepManager;
 
-  constructor(factory: Factory) {}
+  constructor(factory: Factory) {
+    this.memoryManager = factory.getMemoryManager();
+    this.roomManager = factory.createRoomManager();
+    this.sourcesManager = factory.getSourcesManager();
+    this.spawnManager = factory.getSpawnManager();
+    this.creepManager = factory.getCreepManager();
+  }
 
   public run() {
     if (!this.creepManager.isAtMaxHarvesters) {
