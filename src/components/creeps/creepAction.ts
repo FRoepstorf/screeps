@@ -1,42 +1,39 @@
-import { Config } from "../../utils/Config";
+import { Config } from '../../utils/Config';
 
 export interface CreepActionInterface {
-  moveTo(target: RoomPosition | { pos: RoomPosition }): number;
-  needsRenew(): boolean;
-  tryRenew(): number;
-  moveToRenew(): void;
+  moveTo(creep: Creep, target: RoomPosition | { pos: RoomPosition }): number;
+  needsRenew(creep: Creep): boolean;
+  tryRenew(creep: Creep): number;
+  moveToRenew(creep: Creep): void;
 }
 
 export class CreepAction implements CreepActionInterface {
-  private creep: Creep;
   private renewStation: StructureSpawn;
   private minLifeBeforeNeedsRenew: number;
 
-  constructor(creep: Creep, renewStation: StructureSpawn) {
-    this.creep = creep;
+  constructor(renewStation: StructureSpawn) {
     this.renewStation = renewStation;
     this.minLifeBeforeNeedsRenew = Config.MIN_LIFE_BEFORE_RENEW;
   }
 
-  public moveTo(target: RoomPosition | { pos: RoomPosition }): number {
-    return this.creep.moveTo(target);
+  public moveTo(
+    creep: Creep,
+    target: RoomPosition | { pos: RoomPosition }
+  ): number {
+    return creep.moveTo(target);
   }
 
-  public needsRenew(): boolean {
-    return this.creep.ticksToLive <= Config.MIN_LIFE_BEFORE_RENEW;
+  public needsRenew(creep: Creep): boolean {
+    return creep.ticksToLive <= Config.MIN_LIFE_BEFORE_RENEW;
   }
 
-  public tryRenew(): number {
-    return this.renewStation.renewCreep(this.creep);
+  public tryRenew(creep: Creep): number {
+    return this.renewStation.renewCreep(creep);
   }
 
-  public moveToRenew(): void {
-    if (this.tryRenew() == ERR_NOT_IN_RANGE) {
-      this.moveTo(this.renewStation);
+  public moveToRenew(creep: Creep): void {
+    if (this.tryRenew(creep) == ERR_NOT_IN_RANGE) {
+      this.moveTo(creep, this.renewStation);
     }
-  }
-
-  public getCreep(): Creep {
-    return this.creep;
   }
 }
