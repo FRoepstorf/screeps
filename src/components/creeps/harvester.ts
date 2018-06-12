@@ -1,5 +1,5 @@
-import { Config } from '../../utils/Config';
-import { CreepAction, CreepActionInterface } from './creepAction';
+import { Config } from "../../utils/Config";
+import { CreepAction, CreepActionInterface } from "./creepAction";
 
 export interface HarvesterInterface {
   isBagFull(): boolean;
@@ -20,7 +20,7 @@ export class Harvester implements HarvesterInterface {
       Game.getObjectById(this.creep.memory.target_source_id)
     );
     this.targetEnergyDropOff = <StructureSpawn | Structure>(
-      Game.getObjectById(this.creep.target_enegery_dropoff)
+      Game.getObjectById(this.creep.memory.target_energy_dropoff_id)
     );
   }
 
@@ -39,6 +39,7 @@ export class Harvester implements HarvesterInterface {
   }
 
   tryEnergyDropOff(): number {
+    console.log(this.targetEnergyDropOff);
     return this.creep.transfer(this.targetEnergyDropOff, RESOURCE_ENERGY);
   }
 

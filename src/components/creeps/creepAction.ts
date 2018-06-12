@@ -1,4 +1,4 @@
-import { Config } from '../../utils/Config';
+import { Config } from "../../utils/Config";
 
 export interface CreepActionInterface {
   moveTo(creep: Creep, target: RoomPosition | { pos: RoomPosition }): number;
@@ -24,7 +24,7 @@ export class CreepAction implements CreepActionInterface {
   }
 
   public needsRenew(creep: Creep): boolean {
-    return creep.ticksToLive <= Config.MIN_LIFE_BEFORE_RENEW;
+    return creep.ticksToLive! <= Config.MIN_LIFE_BEFORE_RENEW;
   }
 
   public tryRenew(creep: Creep): number {

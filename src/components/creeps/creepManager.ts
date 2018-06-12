@@ -1,8 +1,7 @@
-import { Config } from '../../utils/Config';
-import { SourcesManager } from '../sources/sourcesManager';
-import { SpawnManager } from '../spawns/spawnManager';
-import { Harvester } from './harvester';
-import { CreepAction } from './creepAction';
+import { Config } from "../../utils/Config";
+import { SourcesManager } from "../sources/sourcesManager";
+import { SpawnManager } from "../spawns/spawnManager";
+import { Harvester } from "./harvester";
 
 export class CreepManager {
   private creeps: { [creepName: string]: Creep };
@@ -10,27 +9,21 @@ export class CreepManager {
   private creepCount: number;
   private sourcesManager: SourcesManager;
   private spawnManager: SpawnManager;
-  private creepAction: CreepAction;
 
-  constructor(
-    sourcesManager: SourcesManager,
-    spawnManager: SpawnManager,
-    creepAction: CreepAction
-  ) {
+  constructor(sourcesManager: SourcesManager, spawnManager: SpawnManager) {
     this.creeps = Game.creeps;
     this.creepCount = _.size(this.creeps);
     this.sourcesManager = sourcesManager;
     this.spawnManager = spawnManager;
-    this.creepAction = creepAction;
     this.setCreepNames();
   }
 
   public createHarvester(): number {
     let bodyParts: BodyPartConstant[] = Config.HARVESTER_BODY_PARTS;
     let properties: any = {
-      role: 'harvester',
+      role: "harvester",
       target_source_id: this.sourcesManager.getFirstSource().id,
-      target_enegery_dropoff_id: this.sourcesManager.getFirstSource().id,
+      target_energy_dropoff_id: this.spawnManager.getFirstSpawn().id,
       renew_station_id: this.spawnManager.getFirstSpawn().id
     };
 
@@ -48,9 +41,14 @@ export class CreepManager {
   }
 
   public harvestersGoToWork(): void {
-    for (let creepName in this.creepNames) {
-      if (this.creeps[creepName].memory.role == 'harvester') {
-        let harvester: Harvester = new Harvester(this.creeps[creepName]);
+    for (let creepName of this.creepNames) {
+      console.log(this.creeps[creepName]);
+      let harvester: Harvester = new Harvester(this.creeps[creepName]);
+      if (harvester.isBagFull()) {
+        console.log(harvester.tryEnergyDropOff());
+        harvester.tryEnergyDropOff();
+        harvester.moveToDropEnergy();
+      } else {
         harvester.moveToHarvest();
       }
     }
