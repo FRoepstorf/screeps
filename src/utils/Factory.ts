@@ -1,10 +1,11 @@
-import { SourcesManager } from "../components/sources/sourcesManager";
-import { RoomManager } from "../components/rooms/roomManager";
-import { SpawnManager } from "../components/spawns/spawnManager";
-import { CreepManager } from "../components/creeps/creepManager";
 import { CreepAction } from "components/creeps/creepAction";
-import { MemoryManager } from "../shared/memoryManager";
 import { GameManager } from "gameManager";
+import {ControllerManager} from "../components/controllers/controllerManager";
+import { CreepManager } from "../components/creeps/creepManager";
+import { RoomManager } from "../components/rooms/roomManager";
+import { SourcesManager } from "../components/sources/sourcesManager";
+import { SpawnManager } from "../components/spawns/spawnManager";
+import { MemoryManager } from "../shared/memoryManager";
 
 export class Factory {
   private roomManager: RoomManager;
@@ -21,7 +22,8 @@ export class Factory {
     this.creepAction = new CreepAction(this.spawnManager.getFirstSpawn());
     this.creepManager = new CreepManager(
       this.sourcesManager,
-      this.spawnManager
+      this.spawnManager,
+      this.createControllerManager()
     );
     this.memoryManager = new MemoryManager();
   }
@@ -36,28 +38,8 @@ export class Factory {
     );
   }
 
-  public getMemoryManager(): MemoryManager {
-    return this.memoryManager;
-  }
-
-  public getCreepAction(): CreepAction {
-    return this.creepAction;
-  }
-
-  public getCreepManager(): CreepManager {
-    return this.creepManager;
-  }
-
-  public createRoomManager(): RoomManager {
-    return this.roomManager;
-  }
-
-  public getSourcesManager(): SourcesManager {
-    return this.sourcesManager;
-  }
-
-  public getSpawnManager(): SpawnManager {
-    return this.spawnManager;
+  private createControllerManager(): ControllerManager {
+    return new ControllerManager(this.roomManager.getFirstRoom().controller);
   }
 
   private sources(): Source[] {

@@ -1,5 +1,4 @@
-import { Config } from '../../utils/Config';
-import { RoomManager } from '../rooms/roomManager';
+import { RoomManager } from "../rooms/roomManager";
 
 export class SourcesManager {
   private sources: Source[];

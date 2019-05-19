@@ -1,5 +1,4 @@
 import { ErrorMapper } from "utils/ErrorMapper";
-import { GameManager } from "./gameManager";
 import { Factory } from "utils/Factory";
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
@@ -7,8 +6,8 @@ import { Factory } from "utils/Factory";
 export const loop = ErrorMapper.wrapLoop(() => {
   console.log(`Current game tick is ${Game.time}`);
 
-  let factory = new Factory();
-  let gameManager = factory.createGameManager();
+  const factory = new Factory();
+  const gameManager = factory.createGameManager();
   gameManager.run();
 
   // Automatically delete memory of missing creeps

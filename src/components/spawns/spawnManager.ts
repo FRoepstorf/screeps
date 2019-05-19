@@ -15,8 +15,8 @@ export class SpawnManager {
     return this.spawnNames[0];
   }
 
-  assignNames(): void {
-    for (let spawnName in this.spawns) {
+  private assignNames(): void {
+    for (const spawnName in this.spawns) {
       this.spawnNames.push(spawnName);
     }
   }

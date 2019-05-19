@@ -1,5 +1,3 @@
-import { Config } from '../../utils/Config';
-
 export class RoomManager {
   private rooms: { [roomName: string]: Room };
   private roomNames: string[] = [];
@@ -10,7 +8,7 @@ export class RoomManager {
   }
 
   private initializeRoomNames() {
-    for (let roomName in this.rooms) {
+    for (const roomName in this.rooms) {
       this.roomNames.push(roomName);
     }
   }

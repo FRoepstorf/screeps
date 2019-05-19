@@ -1,10 +1,8 @@
-import { Config } from "./utils/Config";
-import { MemoryManager } from "./shared/memoryManager";
+import { CreepManager } from "./components/creeps/creepManager";
 import { RoomManager } from "./components/rooms/roomManager";
 import { SourcesManager } from "./components/sources/sourcesManager";
 import { SpawnManager } from "./components/spawns/spawnManager";
-import { CreepManager } from "./components/creeps/creepManager";
-import { Factory } from "utils/Factory";
+import { MemoryManager } from "./shared/memoryManager";
 
 export class GameManager {
   private memoryManager: MemoryManager;
@@ -32,6 +30,10 @@ export class GameManager {
       console.log("go");
       this.creepManager.createHarvester();
     }
+    if (this.creepManager.isAtMaxHarvesters()) {
+      this.creepManager.createUpgrader();
+    }
+    this.creepManager.upgradersGoToWork();
     this.creepManager.harvestersGoToWork();
   }
 }

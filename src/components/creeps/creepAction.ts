@@ -32,7 +32,7 @@ export class CreepAction implements CreepActionInterface {
   }
 
   public moveToRenew(creep: Creep): void {
-    if (this.tryRenew(creep) == ERR_NOT_IN_RANGE) {
+    if (this.tryRenew(creep) === ERR_NOT_IN_RANGE) {
       this.moveTo(creep, this.renewStation);
     }
   }

@@ -7,7 +7,8 @@ declare global {
 
 export namespace Config {
   export const MIN_LIFE_BEFORE_RENEW: number = 700;
-  export const MAX_HARVESTERS: number = 4;
+  export const MAX_HARVESTERS: number = 2;
+  export const MAX_UPGRADERS: number = 1;
   export const HARVESTER_BODY_PARTS: BodyPartConstant[] = [
     MOVE,
     MOVE,

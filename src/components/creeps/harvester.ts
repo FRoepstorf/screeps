@@ -16,34 +16,34 @@ export class Harvester implements HarvesterInterface {
 
   constructor(creep: Creep) {
     this.creep = creep;
-    this.targetSource = <Source>(
+    this.targetSource = (
       Game.getObjectById(this.creep.memory.target_source_id)
-    );
-    this.targetEnergyDropOff = <StructureSpawn | Structure>(
+    ) as Source;
+    this.targetEnergyDropOff = (
       Game.getObjectById(this.creep.memory.target_energy_dropoff_id)
-    );
+    ) as StructureSpawn | Structure;
   }
 
-  isBagFull(): boolean {
-    return this.creep.carry.energy == this.creep.carryCapacity;
+  public isBagFull(): boolean {
+    return this.creep.carry.energy === this.creep.carryCapacity;
   }
 
-  tryHarvest(): number {
+  public tryHarvest(): number {
     return this.creep.harvest(this.targetSource);
   }
 
-  moveToHarvest(): void {
-    if (this.tryHarvest() == ERR_NOT_IN_RANGE) {
+  public moveToHarvest(): void {
+    if (this.tryHarvest() === ERR_NOT_IN_RANGE) {
       this.creep.moveTo(this.targetSource);
     }
   }
 
-  tryEnergyDropOff(): number {
+  public tryEnergyDropOff(): number {
     console.log(this.targetEnergyDropOff);
     return this.creep.transfer(this.targetEnergyDropOff, RESOURCE_ENERGY);
   }
 
-  moveToDropEnergy(): void {
+  public moveToDropEnergy(): void {
     if (this.tryEnergyDropOff() == ERR_NOT_IN_RANGE) {
       this.creep.moveTo(this.targetEnergyDropOff);
     }
