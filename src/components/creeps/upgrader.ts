@@ -1,5 +1,5 @@
 export interface UpgraderInterface {
-    isBagFull(): boolean;
+    isBagEmpty(): boolean;
     tryUpgrade(): number;
     moveToController(): void;
     tryGetEnergy(): number;
@@ -21,8 +21,8 @@ export class Upgrader implements UpgraderInterface {
         ) as StructureSpawn;
     }
 
-    public isBagFull(): boolean {
-        return this.creep.carry.energy === this.creep.carryCapacity;
+    public isBagEmpty(): boolean {
+        return this.creep.carry.energy === 0;
     }
 
     public moveToController(): void {

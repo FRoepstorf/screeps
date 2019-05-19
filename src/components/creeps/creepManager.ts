@@ -90,7 +90,7 @@ export class CreepManager {
         console.log(this.upgraderNames);
         for (const creepName of this.upgraderNames) {
             const upgrader: Upgrader = new Upgrader(this.creeps[creepName]);
-            if (upgrader.isBagFull()) {
+            if (!upgrader.isBagEmpty()) {
                 upgrader.tryUpgrade();
                 upgrader.moveToController();
             } else {
