@@ -41,6 +41,13 @@ export class CreepFactory {
         this.buildCreep(bodyParts, creepMemory);
     }
 
+    public spawnGuard(): void {
+        const bodyParts: BodyPartConstant[] = Config.GUARD_BODY_PARTS;
+        const creepMemory: CreepMemory = {};
+
+        this.buildCreep(bodyParts, creepMemory);
+    }
+
     private buildCreep(bodyParts: BodyPartConstant[], creepMemory: CreepMemory) {
         const status: number = this.spawnManager
             .getFirstSpawn().spawnCreep(bodyParts, "dryrun", this.dryRunSpawnOptions(creepMemory));

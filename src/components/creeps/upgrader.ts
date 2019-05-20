@@ -1,8 +1,12 @@
 export interface UpgraderInterface {
     isBagEmpty(): boolean;
+
     tryUpgrade(): number;
+
     moveToController(): void;
+
     tryGetEnergy(): number;
+
     moveToGetEnergy(): void;
 }
 
@@ -37,11 +41,21 @@ export class Upgrader implements UpgraderInterface {
         }
     }
 
+    public moveToConstructionSite(constructionSite: ConstructionSite): void {
+        if (this.tryConstruct(constructionSite) === ERR_NOT_IN_RANGE) {
+            this.creep.moveTo(constructionSite);
+        }
+    }
+
     public tryGetEnergy(): number {
         return this.creep.withdraw(this.spawn, RESOURCE_ENERGY);
     }
 
     public tryUpgrade(): number {
         return this.creep.upgradeController(this.controller);
+    }
+
+    public tryConstruct(constructionSite: ConstructionSite): number {
+        return this.creep.build(constructionSite);
     }
 }

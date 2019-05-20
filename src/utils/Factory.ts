@@ -1,10 +1,11 @@
 import {GameManager} from "gameManager";
+import {ConstructionManager} from "../components/constructions/constructionManager";
 import {ControllerManager} from "../components/controllers/controllerManager";
+import {CreepFactory} from "../components/creeps/creepFactory";
 import {CreepManager} from "../components/creeps/creepManager";
 import {RoomManager} from "../components/rooms/roomManager";
 import {SourcesManager} from "../components/sources/sourcesManager";
 import {SpawnManager} from "../components/spawns/spawnManager";
-import {CreepFactory} from "../components/creeps/creepFactory";
 
 export class Factory {
 
@@ -14,7 +15,9 @@ export class Factory {
 
     private createCreepManager(): CreepManager {
         return new CreepManager(
-            this.createCreepFactory()
+            this.createCreepFactory(),
+            this.createConstructionManager(),
+            this.createRoomManager().getHostiles()
         );
     }
 
@@ -41,6 +44,9 @@ export class Factory {
         return new RoomManager();
     }
 
+    private createConstructionManager(): ConstructionManager {
+        return new ConstructionManager();
+    }
 
     private createControllerManager(): ControllerManager {
         return new ControllerManager(this.createRoomManager().getFirstRoom().controller);

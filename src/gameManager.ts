@@ -14,6 +14,9 @@ export class GameManager {
         if (this.creepManager.isAtMaxHarvesters() && !this.creepManager.isAtMaxUpgraders()) {
             this.creepManager.createUpgrader();
         }
+        if (this.creepManager.isAtMaxGuards()) {
+            this.creepManager.createGuard();
+        }
         this.creepManager.upgradersGoToWork();
         this.creepManager.harvestersGoToWork();
     }

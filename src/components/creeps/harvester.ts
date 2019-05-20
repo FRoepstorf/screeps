@@ -1,6 +1,3 @@
-import { Config } from "../../utils/Config";
-import { CreepAction, CreepActionInterface } from "./creepAction";
-
 export interface HarvesterInterface {
   isBagFull(): boolean;
   tryHarvest(): number;
@@ -44,7 +41,7 @@ export class Harvester implements HarvesterInterface {
   }
 
   public moveToDropEnergy(): void {
-    if (this.tryEnergyDropOff() == ERR_NOT_IN_RANGE) {
+    if (this.tryEnergyDropOff() === ERR_NOT_IN_RANGE) {
       this.creep.moveTo(this.targetEnergyDropOff);
     }
   }
