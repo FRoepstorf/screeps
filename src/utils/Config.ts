@@ -1,10 +1,4 @@
-declare global {
-  interface CreepMemory {
-    [target_source_id: string]: any;
-    [target_energy_dropoff: string]: any;
-  }
-}
-
+// tslint:disable-next-line:no-namespace
 export namespace Config {
   export const MIN_LIFE_BEFORE_RENEW: number = 700;
   export const MAX_HARVESTERS: number = 2;

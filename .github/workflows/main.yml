@@ -10,4 +10,4 @@ jobs:
       - name: Prepare
         run: yarn install
       - name: Lint
-        run: yarn tslint --project .
+        run: yarn lint

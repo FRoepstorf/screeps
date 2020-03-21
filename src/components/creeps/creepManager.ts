@@ -1,9 +1,9 @@
 import {Config} from "../../utils/Config";
 import {ConstructionManager} from "../constructions/constructionManager";
 import {CreepFactory} from "./creepFactory";
+import {Guard} from "./guard";
 import {Harvester} from "./harvester";
 import {Upgrader} from "./upgrader";
-import {Guard} from "./guard";
 
 export class CreepManager {
     private creeps: { [creepName: string]: Creep };
