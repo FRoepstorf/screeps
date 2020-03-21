@@ -20,10 +20,10 @@ export class CreepFactory {
 
     public spawnUpgrader(): void {
         const bodyParts: BodyPartConstant[] = Config.HARVESTER_BODY_PARTS;
-        const creepMemory: CreepMemory = {
-            controller_id: this.controllerManager.getController().id,
+        const creepMemory: UpgraderCreepMemory = {
+            controllerId: this.controllerManager.getController().id,
             role: "upgrader",
-            spawn_id: this.spawnManager.getFirstSpawn().id
+            spawnId: this.spawnManager.getFirstSpawn().id
         };
 
         this.buildCreep(bodyParts, creepMemory);
@@ -31,11 +31,11 @@ export class CreepFactory {
 
     public spawnHarvester(): void {
         const bodyParts: BodyPartConstant[] = Config.HARVESTER_BODY_PARTS;
-        const creepMemory: CreepMemory = {
-            renew_station_id: this.spawnManager.getFirstSpawn().id,
+        const creepMemory: HarvesterCreepMemory = {
+            renewStationId: this.spawnManager.getFirstSpawn().id,
             role: "harvester",
-            target_energy_dropoff_id: this.spawnManager.getFirstSpawn().id,
-            target_source_id: this.sourcesManager.getFirstSource().id
+            targetEnergyDropoffId: this.spawnManager.getFirstSpawn().id,
+            targetSourceId: this.sourcesManager.getFirstSource().id
         };
 
         this.buildCreep(bodyParts, creepMemory);
@@ -43,12 +43,14 @@ export class CreepFactory {
 
     public spawnGuard(): void {
         const bodyParts: BodyPartConstant[] = Config.GUARD_BODY_PARTS;
-        const creepMemory: CreepMemory = {};
+        const creepMemory: BaseCreepMemory = {
+          role: "guard"
+        };
 
         this.buildCreep(bodyParts, creepMemory);
     }
 
-    private buildCreep(bodyParts: BodyPartConstant[], creepMemory: CreepMemory) {
+    private buildCreep(bodyParts: BodyPartConstant[], creepMemory: BaseCreepMemory) {
         const status: number = this.spawnManager
             .getFirstSpawn().spawnCreep(bodyParts, "dryrun", this.dryRunSpawnOptions(creepMemory));
 

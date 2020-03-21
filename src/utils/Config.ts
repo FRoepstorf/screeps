@@ -1,3 +1,20 @@
+declare global {
+  interface HarvesterCreepMemory extends BaseCreepMemory {
+    renewStationId: Id<StructureSpawn>;
+    targetEnergyDropoffId: Id<StructureSpawn>;
+    targetSourceId: Id<Source>;
+  }
+
+  interface UpgraderCreepMemory extends BaseCreepMemory {
+    controllerId: Id<StructureController>;
+    spawnId: Id<StructureSpawn>;
+  }
+
+  interface BaseCreepMemory {
+    role: string;
+  }
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace Config {
   export const MIN_LIFE_BEFORE_RENEW: number = 700;
