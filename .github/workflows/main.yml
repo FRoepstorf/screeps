@@ -10,7 +10,4 @@ jobs:
       - name: Prepare
         run: yarn install
       - name: Lint
-        uses: mooyoul/tslint-actions@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pattern: '*.ts'
+        run: yarn tslint --project .
