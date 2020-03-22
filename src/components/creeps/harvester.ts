@@ -1,3 +1,6 @@
+import {HarvesterMemory} from "../memory/Memories/HarvesterMemory";
+import {MemoryBuilder} from "../memory/memoryBuilder";
+
 export interface HarvesterInterface {
   isBagFull(): boolean;
   tryHarvest(): number;
@@ -10,14 +13,16 @@ export class Harvester implements HarvesterInterface {
   private targetSource: Source;
   private targetEnergyDropOff: StructureSpawn | Structure;
   private creep: Creep;
+  private harvesterMemory: HarvesterMemory;
 
   constructor(creep: Creep) {
     this.creep = creep;
+    this.harvesterMemory = MemoryBuilder.buildHarvesterMemory(creep.memory);
     this.targetSource = (
-      Game.getObjectById(this.creep.memory.target_source_id)
+      Game.getObjectById(this.harvesterMemory.getTargetSourceId())
     ) as Source;
     this.targetEnergyDropOff = (
-      Game.getObjectById(this.creep.memory.target_energy_dropoff_id)
+      Game.getObjectById(this.harvesterMemory.getEnergyDropOffId())
     ) as StructureSpawn | Structure;
   }
 

@@ -1,3 +1,14 @@
+declare global {
+  interface CreepMemory {
+    role: string;
+    controllerId?: Id<StructureController>;
+    spawnId?: Id<StructureSpawn>;
+    renewStationId?: Id<StructureSpawn>;
+    targetEnergyDropoffId?: Id<StructureSpawn>;
+    targetSourceId?: Id<Source>;
+  }
+}
+
 // tslint:disable-next-line:no-namespace
 export namespace Config {
   export const MIN_LIFE_BEFORE_RENEW: number = 700;
@@ -17,4 +28,7 @@ export namespace Config {
       ATTACK,
       TOUGH
   ];
+  export const HARVESTER_ROLE: string = "harvester";
+  export const UPGRADER_ROLE: string = "upgrader";
+  export const GUARD_ROLE: string = "guard";
 }

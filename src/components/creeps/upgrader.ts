@@ -1,12 +1,11 @@
+import {UpgraderMemory} from "../memory/Memories/UpgraderMemory";
+import {MemoryBuilder} from "../memory/memoryBuilder";
+
 export interface UpgraderInterface {
     isBagEmpty(): boolean;
-
     tryUpgrade(): number;
-
     moveToController(): void;
-
     tryGetEnergy(): number;
-
     moveToGetEnergy(): void;
 }
 
@@ -14,14 +13,16 @@ export class Upgrader implements UpgraderInterface {
     private controller: StructureController;
     private spawn: StructureSpawn;
     private creep: Creep;
+    private upgraderMemory: UpgraderMemory;
 
     constructor(creep: Creep) {
         this.creep = creep;
+        this.upgraderMemory = MemoryBuilder.buildUpgraderMemory(this.creep.memory);
         this.controller = (
-            Game.getObjectById(this.creep.memory.controller_id)
+            Game.getObjectById(this.upgraderMemory.getControllerId())
         ) as StructureController;
         this.spawn = (
-            Game.getObjectById(this.creep.memory.spawn_id)
+            Game.getObjectById(this.upgraderMemory.getSpawnId())
         ) as StructureSpawn;
     }
 
