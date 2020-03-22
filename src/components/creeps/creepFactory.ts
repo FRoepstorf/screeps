@@ -20,9 +20,9 @@ export class CreepFactory {
 
     public spawnUpgrader(): void {
         const bodyParts: BodyPartConstant[] = Config.HARVESTER_BODY_PARTS;
-        const creepMemory: UpgraderCreepMemory = {
+        const creepMemory: CreepMemory = {
             controllerId: this.controllerManager.getController().id,
-            role: "upgrader",
+            role: Config.UPGRADER_ROLE,
             spawnId: this.spawnManager.getFirstSpawn().id
         };
 
@@ -31,9 +31,9 @@ export class CreepFactory {
 
     public spawnHarvester(): void {
         const bodyParts: BodyPartConstant[] = Config.HARVESTER_BODY_PARTS;
-        const creepMemory: HarvesterCreepMemory = {
+        const creepMemory: CreepMemory = {
             renewStationId: this.spawnManager.getFirstSpawn().id,
-            role: "harvester",
+            role: Config.HARVESTER_ROLE,
             targetEnergyDropoffId: this.spawnManager.getFirstSpawn().id,
             targetSourceId: this.sourcesManager.getFirstSource().id
         };
@@ -43,14 +43,14 @@ export class CreepFactory {
 
     public spawnGuard(): void {
         const bodyParts: BodyPartConstant[] = Config.GUARD_BODY_PARTS;
-        const creepMemory: BaseCreepMemory = {
-          role: "guard"
+        const creepMemory: CreepMemory = {
+          role: Config.GUARD_ROLE
         };
 
         this.buildCreep(bodyParts, creepMemory);
     }
 
-    private buildCreep(bodyParts: BodyPartConstant[], creepMemory: BaseCreepMemory) {
+    private buildCreep(bodyParts: BodyPartConstant[], creepMemory: CreepMemory) {
         const status: number = this.spawnManager
             .getFirstSpawn().spawnCreep(bodyParts, "dryrun", this.dryRunSpawnOptions(creepMemory));
 

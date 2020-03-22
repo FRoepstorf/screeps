@@ -1,17 +1,11 @@
 declare global {
-  interface HarvesterCreepMemory extends BaseCreepMemory {
-    renewStationId: Id<StructureSpawn>;
-    targetEnergyDropoffId: Id<StructureSpawn>;
-    targetSourceId: Id<Source>;
-  }
-
-  interface UpgraderCreepMemory extends BaseCreepMemory {
-    controllerId: Id<StructureController>;
-    spawnId: Id<StructureSpawn>;
-  }
-
-  interface BaseCreepMemory {
+  interface CreepMemory {
     role: string;
+    controllerId?: Id<StructureController>;
+    spawnId?: Id<StructureSpawn>;
+    renewStationId?: Id<StructureSpawn>;
+    targetEnergyDropoffId?: Id<StructureSpawn>;
+    targetSourceId?: Id<Source>;
   }
 }
 
@@ -34,4 +28,7 @@ export namespace Config {
       ATTACK,
       TOUGH
   ];
+  export const HARVESTER_ROLE: string = "harvester";
+  export const UPGRADER_ROLE: string = "upgrader";
+  export const GUARD_ROLE: string = "guard";
 }
