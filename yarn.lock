@@ -45,10 +45,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-3.10.2.tgz#c1fbda1562ef5603c8192fe1fe65b017849d5873"
   integrity sha512-TmlYodTNhMzVzv3CK/9sXGzh31jWsRKHE3faczhVgYFCdXIRQRCOPD+0NDlR+SvJlCj914yP3q3aAupt53p2Ug==
 
-"@types/screeps@^3.0.1":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/screeps/-/screeps-3.0.0.tgz#53e11cfd0d6a9de9ac32de3d3a215a4b43da9f38"
-  integrity sha512-mQRpLIAqBopoy20ecR8f0Z5j4Y2UpcIhMd9KbKlWqO3anrxUmasc75C910X7OAzJtl4A71/nsTk7XfRa+Gw3Hw==
+"@types/screeps@^3.0.0":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@types/screeps/-/screeps-3.2.3.tgz#85a89ee286f8c35bb404214fb2e21c2eb3025b26"
+  integrity sha512-XJwbYyvGGu+nuxxGzTFv9dDO4+4XK+w7fi6k2l+mIvN2bZ9m0jNJPt3qIB4Z1OUc+lZnM0YYjXkTwqZQCZtvZw==
 
 acorn-dynamic-import@^3.0.0:
   version "3.0.0"
@@ -570,9 +570,9 @@ path-is-absolute@^1.0.0:
   integrity sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 prebuild-install@~4.0.0:
   version "4.0.0"
