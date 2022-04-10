@@ -45,10 +45,10 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-3.10.2.tgz#c1fbda1562ef5603c8192fe1fe65b017849d5873"
   integrity sha512-TmlYodTNhMzVzv3CK/9sXGzh31jWsRKHE3faczhVgYFCdXIRQRCOPD+0NDlR+SvJlCj914yP3q3aAupt53p2Ug==
 
-"@types/screeps@^3.0.1":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/screeps/-/screeps-3.0.0.tgz#53e11cfd0d6a9de9ac32de3d3a215a4b43da9f38"
-  integrity sha512-mQRpLIAqBopoy20ecR8f0Z5j4Y2UpcIhMd9KbKlWqO3anrxUmasc75C910X7OAzJtl4A71/nsTk7XfRa+Gw3Hw==
+"@types/screeps@^3.0.0":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@types/screeps/-/screeps-3.2.4.tgz#7a52d57c920e16f52f853cf4c55a1f603457c78d"
+  integrity sha512-itlqAHdAZ2ZkDFERy3TkmmMIisSXT7tXfEnhhl5N7xNZbNmNs/qgGfCIRchPLIFj0w5EPpj6JurKZ3vpSxaNiQ==
 
 acorn-dynamic-import@^3.0.0:
   version "3.0.0"
@@ -489,9 +489,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.2.0, minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mkdirp@^0.5.1:
   version "0.5.3"
